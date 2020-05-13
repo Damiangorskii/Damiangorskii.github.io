@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+		 <title>Damian Górski</title>
+	</head>
+<body>
+
+
+<h3> Zadanie</h3>
+<p>Oblicz objętość stożeka o wysokości <b>H</b>, gdzie podstawa to koło o promieniu <b>r</b>.</p>
+
+<h3> Dane wejsciowe</h3>
+<form>
+ <p>H= <input type = "number" id= "H" value = "1" onchange="wartosc()" min="1" /></p>
+<p>r= <input type = "number" id= "r" value = "1" onchange="wartosc()" min="1"/></p>
+</form>
+
+<h3>Rysunek</h3>
+
+<svg width="500" height="500">
+			<text id="rysunekH" x="180" y="200" font-size="20" stroke="black" stroke-width:"3">1</text>
+			<text id="rysunekr" x="240" y="320" font-size="20" stroke="black" stroke-width:"3">1</text>
+			<ellipse cx="200" cy="300" rx="110" ry="75" stroke="black" stroke-width="3" fill="none"/>
+			<line x1="90" y1="290" x2="200" y2="20"  stroke="black" stroke-width="3" />
+			<line x1="200" y1="20" x2="310" y2="290"  stroke="black" stroke-width="3" />
+			<line x1="200" y1="20" x2="200" y2="290"  stroke="black" stroke-width="1" />
+			<line x1="200" y1="290" x2="310" y2="290"  stroke="black" stroke-width="1" />
+</svg>
+
+
+
+<h3>Rozwiązanie</h3>
+
+<p>
+<math  xmlns='http://www.w3.org/1998/Math/MathML'>
+<mrow>
+<mi>V</mi>
+</mrow>
+<mo>=</mo>
+<mfrac>
+<mrow>
+<mn>1</mn>
+</mrow>
+<mn>3</mn>
+</mfrac>
+<mo>*</mo>
+<mi>&pi;</mi>
+<mo>*</mo>
+<msup>
+<mi>r</mi>
+<mn>2</mn>
+</msup>
+<mo>*</mo>
+<mi>H</mi>
+<mo>=</mo>
+<mfrac>
+<mn>1</mn>
+<mn>3</mn>
+</mfrac>
+<mo>*</mo>
+<mn>3,14</mn>
+<mo>*</mo>
+<msup>
+<mi id="dzialanier">1</mi>
+<mn>2</mn>
+</msup>
+<mo>*</mo>
+<mi id="dzialanieH">1</mi>
+<mo>=</mo>
+<mi id="wynikDzialania"></mi>
+</mrow>
+</math>
+</p>
+
+<script>
+function wartosc() {
+  var H=document.getElementById("H").value
+  var r= document.getElementById("r").value
+  document.getElementById("rysunekH").innerHTML = H;
+  document.getElementById("dzialanieH").innerHTML = H;
+  document.getElementById("rysunekr").innerHTML = r;
+  document.getElementById("dzialanier").innerHTML = r;
+  document.getElementById("wynikDzialania").innerHTML = dzialanie(r,H);
+}
+
+function dzialanie(r,H){
+				var wynik=1/3*3.14*r*r*H 				
+				return Math.round((wynik + Number.EPSILON) * 100) / 100
+			}
+			
+document.getElementById("wynikDzialania").innerHTML = dzialanie(1,1);
+</script>
+
+</body>
+</html>
